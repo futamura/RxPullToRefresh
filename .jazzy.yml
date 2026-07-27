@@ -3,7 +3,7 @@ module: RxPullToRefresh
 author: Kojiro Futamura
 author_url: https://github.com/futamura
 github_url: https://github.com/futamura/RxPullToRefresh
-copyright: 'Copyright © 2018 Gumob. All rights reserved.'
+copyright: 'Copyright © 2018 Kojiro Futamura. All rights reserved.'
 
 min_acl: public
 clean: true
