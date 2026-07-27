@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
     s.homepage          = "https://github.com/futamura/RxPullToRefresh"
     s.documentation_url = "https://futamura.github.io/RxPullToRefresh"
     s.license           = { :type => "MIT", :file => "LICENSE" }
-    s.author            = { "gumob" => "hello@gumob.com" }
+    s.author            = { "Kojiro Futamura" => "futamura.dev@gmail.com" }
 
     s.module_name               = "RxPullToRefresh"
     s.source                    = { :git => "https://github.com/futamura/RxPullToRefresh.git", :tag => "#{s.version}", :submodules => true }
