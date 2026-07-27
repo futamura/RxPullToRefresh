@@ -1,4 +1,4 @@
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg)](https://github.com/gumob/RxPullToRefresh)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg)](https://github.com/futamura/RxPullToRefresh)
 [![Version](http://img.shields.io/cocoapods/v/RxPullToRefresh.svg)](http://cocoadocs.org/docsets/RxPullToRefresh)
 [![Platform](http://img.shields.io/cocoapods/p/RxPullToRefresh.svg)](http://cocoadocs.org/docsets/RxPullToRefresh)
 [![Build Status](https://travis-ci.com/gumob/RxPullToRefresh.svg?branch=master)](https://travis-ci.com/gumob/RxPullToRefresh)
@@ -10,7 +10,7 @@
 # RxPullToRefresh
 A Swift library allows you to create a flexibly customizable pull-to-refresh view supporting RxSwift.
 
-<img src="https://raw.githubusercontent.com/gumob/RxPullToRefresh/master/Metadata/screenshot-animation.gif" alt="drawing" width="240px" style="width:240px;"/>
+<img src="https://raw.githubusercontent.com/futamura/RxPullToRefresh/master/Metadata/screenshot-animation.gif" alt="drawing" width="240px" style="width:240px;"/>
 
 ## Features
 
@@ -33,14 +33,14 @@ A Swift library allows you to create a flexibly customizable pull-to-refresh vie
 Add the following to your `Cartfile` and follow [these instructions](https://github.com/Carthage/Carthage#adding-frameworks-to-an-application).
 
 ```
-github "gumob/RxPullToRefresh"        # Swift 5.0
-github "gumob/RxPullToRefresh" ~> 1.0 # Swift 5.0
-github "gumob/RxPullToRefresh" ~> 0.1 # Swift 4.2
+github "futamura/RxPullToRefresh"        # Swift 5.0
+github "futamura/RxPullToRefresh" ~> 1.0 # Swift 5.0
+github "futamura/RxPullToRefresh" ~> 0.1 # Swift 4.2
 ```
 
 Do not forget to include RxSwift.framework and RxCocoa.framework. Otherwise it will fail to build the application.<br/>
 
-<img src="https://raw.githubusercontent.com/gumob/RxPullToRefresh/master/Metadata/carthage-xcode-config.jpg" alt="drawing" width="480" style="width:100%; max-width: 480px;"/>
+<img src="https://raw.githubusercontent.com/futamura/RxPullToRefresh/master/Metadata/carthage-xcode-config.jpg" alt="drawing" width="480" style="width:100%; max-width: 480px;"/>
 
 ### CocoaPods
 
@@ -56,7 +56,7 @@ pod 'RxPullToRefresh', '~> 0.1'   # Swift 4.2
 
 ## Usage
 
-Read the [API reference](https://gumob.github.io/RxPullToRefresh/Classes/RxPullToRefresh.html) and the [USAGE.md](https://gumob.github.io/RxPullToRefresh/usage.html) for detailed information.
+Read the [API reference](https://futamura.github.io/RxPullToRefresh/Classes/RxPullToRefresh.html) and the [USAGE.md](https://futamura.github.io/RxPullToRefresh/usage.html) for detailed information.
 
 ### Basic Usage
 
@@ -81,7 +81,7 @@ self.tableView.p2r.addPullToRefresh(self.topPullToRefresh)
 
 #### Observe RxPullToRefreshDelegate
 
-By observing [RxPullToRefreshDelegate](https://gumob.github.io/RxPullToRefresh/Protocols/RxPullToRefreshDelegate.html), you can watch the state of a RxPullToRefresh object. This delegate is get called by the RxPullToRefresh object every time its [state](https://gumob.github.io/RxPullToRefresh/Enums/RxPullToRefreshState.html) or scrolling rate is changed.
+By observing [RxPullToRefreshDelegate](https://futamura.github.io/RxPullToRefresh/Protocols/RxPullToRefreshDelegate.html), you can watch the state of a RxPullToRefresh object. This delegate is get called by the RxPullToRefresh object every time its [state](https://futamura.github.io/RxPullToRefresh/Enums/RxPullToRefreshState.html) or scrolling rate is changed.
 ```swift
 // Observe RxPullToRefreshDelegate
 self.topPullToRefresh.rx.action
@@ -132,13 +132,13 @@ override func viewDidDisappear(_ animated: Bool) {
 
 #### About the example project
 
-`RxPullToRefresh` allows you flexibly customize a refresh view by inheriting [RxPullToRefresh](https://gumob.github.io/RxPullToRefresh/Classes/RxPullToRefresh.html) and [RxPullToRefreshView](https://gumob.github.io/RxPullToRefresh/Classes/RxPullToRefreshView.html) classes. Please check [example sources](https://github.com/gumob/RxPullToRefresh/blob/master/Example/) for advanced usage.
+`RxPullToRefresh` allows you flexibly customize a refresh view by inheriting [RxPullToRefresh](https://futamura.github.io/RxPullToRefresh/Classes/RxPullToRefresh.html) and [RxPullToRefreshView](https://futamura.github.io/RxPullToRefresh/Classes/RxPullToRefreshView.html) classes. Please check [example sources](https://github.com/futamura/RxPullToRefresh/blob/master/Example/) for advanced usage.
 
-- [CustomRefresh](https://github.com/gumob/RxPullToRefresh/blob/master/Example/CustomRefresh.swift): A class inheriting from `RxPullToRefresh`.
-- [CustomRefreshView](https://github.com/gumob/RxPullToRefresh/blob/master/Example/CustomRefresh.swift): A class inheriting from `RxPullToRefreshView`. Animation logics are implemented in this class.
-- [BaseTableViewController](https://github.com/gumob/RxPullToRefresh/blob/master/Example/TableViewController.swift): A view controller that conforms to MVVM architecture.
-- [CustomTableViewController](https://github.com/gumob/RxPullToRefresh/blob/master/Example/TableViewController.swift): A view controller that creates a `CustomPullToRefresh` instance.
-- [TableViewModel](https://github.com/gumob/RxPullToRefresh/blob/master/Example/TableViewModel.swift): A view model that manipulates data sources.
+- [CustomRefresh](https://github.com/futamura/RxPullToRefresh/blob/master/Example/CustomRefresh.swift): A class inheriting from `RxPullToRefresh`.
+- [CustomRefreshView](https://github.com/futamura/RxPullToRefresh/blob/master/Example/CustomRefresh.swift): A class inheriting from `RxPullToRefreshView`. Animation logics are implemented in this class.
+- [BaseTableViewController](https://github.com/futamura/RxPullToRefresh/blob/master/Example/TableViewController.swift): A view controller that conforms to MVVM architecture.
+- [CustomTableViewController](https://github.com/futamura/RxPullToRefresh/blob/master/Example/TableViewController.swift): A view controller that creates a `CustomPullToRefresh` instance.
+- [TableViewModel](https://github.com/futamura/RxPullToRefresh/blob/master/Example/TableViewModel.swift): A view model that manipulates data sources.
 
 #### Build the example app
 

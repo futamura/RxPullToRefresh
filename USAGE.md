@@ -1,6 +1,6 @@
 ## Usage
 
-Read the [API reference](https://gumob.github.io/RxPullToRefresh/Classes/RxPullToRefresh.html) and the [USAGE.md](https://gumob.github.io/RxPullToRefresh/usage.html) for detailed information.
+Read the [API reference](https://futamura.github.io/RxPullToRefresh/Classes/RxPullToRefresh.html) and the [USAGE.md](https://futamura.github.io/RxPullToRefresh/usage.html) for detailed information.
 
 ### Basic Usage
 
@@ -25,7 +25,7 @@ self.tableView.p2r.addPullToRefresh(self.topPullToRefresh)
 
 #### Observe RxPullToRefreshDelegate
 
-By observing [RxPullToRefreshDelegate](https://gumob.github.io/RxPullToRefresh/Protocols/RxPullToRefreshDelegate.html), you can watch the state of a RxPullToRefresh object. This delegate is get called by the RxPullToRefresh object every time its [state](https://gumob.github.io/RxPullToRefresh/Enums/RxPullToRefreshState.html) or scrolling rate is changed.
+By observing [RxPullToRefreshDelegate](https://futamura.github.io/RxPullToRefresh/Protocols/RxPullToRefreshDelegate.html), you can watch the state of a RxPullToRefresh object. This delegate is get called by the RxPullToRefresh object every time its [state](https://futamura.github.io/RxPullToRefresh/Enums/RxPullToRefreshState.html) or scrolling rate is changed.
 ```swift
 // Observe RxPullToRefreshDelegate
 self.topPullToRefresh.rx.action
@@ -76,13 +76,13 @@ override func viewDidDisappear(_ animated: Bool) {
 
 #### About the example project
 
-`RxPullToRefresh` allows you flexibly customize a refresh view by inheriting [RxPullToRefresh](https://gumob.github.io/RxPullToRefresh/Classes/RxPullToRefresh.html) and [RxPullToRefreshView](https://gumob.github.io/RxPullToRefresh/Classes/RxPullToRefreshView.html) classes. Please check [example sources](https://github.com/gumob/RxPullToRefresh/blob/master/Example/) for advanced usage.
+`RxPullToRefresh` allows you flexibly customize a refresh view by inheriting [RxPullToRefresh](https://futamura.github.io/RxPullToRefresh/Classes/RxPullToRefresh.html) and [RxPullToRefreshView](https://futamura.github.io/RxPullToRefresh/Classes/RxPullToRefreshView.html) classes. Please check [example sources](https://github.com/futamura/RxPullToRefresh/blob/master/Example/) for advanced usage.
 
-- [CustomRefresh](https://github.com/gumob/RxPullToRefresh/blob/master/Example/CustomRefresh.swift): A class inheriting from `RxPullToRefresh`.
-- [CustomRefreshView](https://github.com/gumob/RxPullToRefresh/blob/master/Example/CustomRefresh.swift): A class inheriting from `RxPullToRefreshView`. Animation logics are implemented in this class.
-- [BaseTableViewController](https://github.com/gumob/RxPullToRefresh/blob/master/Example/TableViewController.swift): A view controller that conforms to MVVM architecture.
-- [CustomTableViewController](https://github.com/gumob/RxPullToRefresh/blob/master/Example/TableViewController.swift): A view controller that creates a `CustomPullToRefresh` instance.
-- [TableViewModel](https://github.com/gumob/RxPullToRefresh/blob/master/Example/TableViewModel.swift): A view model that manipulates data sources.
+- [CustomRefresh](https://github.com/futamura/RxPullToRefresh/blob/master/Example/CustomRefresh.swift): A class inheriting from `RxPullToRefresh`.
+- [CustomRefreshView](https://github.com/futamura/RxPullToRefresh/blob/master/Example/CustomRefresh.swift): A class inheriting from `RxPullToRefreshView`. Animation logics are implemented in this class.
+- [BaseTableViewController](https://github.com/futamura/RxPullToRefresh/blob/master/Example/TableViewController.swift): A view controller that conforms to MVVM architecture.
+- [CustomTableViewController](https://github.com/futamura/RxPullToRefresh/blob/master/Example/TableViewController.swift): A view controller that creates a `CustomPullToRefresh` instance.
+- [TableViewModel](https://github.com/futamura/RxPullToRefresh/blob/master/Example/TableViewModel.swift): A view model that manipulates data sources.
 
 #### Build the example app
 
