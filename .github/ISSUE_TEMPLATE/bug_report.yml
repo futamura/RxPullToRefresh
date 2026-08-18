@@ -1,0 +1,57 @@
+name: Bug report
+description: Report something that does not work as documented.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before filing, please check the [existing issues](https://github.com/futamura/RxPullToRefresh/issues?q=is%3Aissue)
+        and the [API reference](https://futamura.github.io/RxPullToRefresh/documentation/rxpulltorefresh/).
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: What happened
+      description: What you expected, and what you got instead.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: |
+        The smallest set of steps that triggers the problem. A code snippet showing
+        how the `RxPullToRefresh` object is created and attached is usually enough.
+      placeholder: |
+        1. Create `RxPullToRefresh(position: .top)`
+        2. Attach it with `tableView.p2r.addPullToRefresh(_:)`
+        3. Pull down and release
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: RxPullToRefresh version
+      placeholder: "2.0.0"
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Xcode version, Swift version, RxSwift version, and the iOS version you ran on.
+      placeholder: "Xcode 26.0, Swift 6.0, RxSwift 6.9.0, iOS 18.2 simulator"
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Console output
+      description: Crash log or console output, if any. Rendered as a code block, no backticks needed.
+      render: text
+    validations:
+      required: false

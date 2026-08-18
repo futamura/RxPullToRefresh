@@ -1,0 +1,30 @@
+name: Feature request
+description: Suggest a capability the library does not have yet.
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem
+      description: What are you trying to build that the current API makes awkward or impossible?
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed API
+      description: |
+        How it would look at the call site. Note that `RxPullToRefreshView` is designed
+        to be subclassed, so some customisations may already be possible without an API change.
+      render: swift
+    validations:
+      required: false
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Workarounds you tried, and why they fall short.
+    validations:
+      required: false

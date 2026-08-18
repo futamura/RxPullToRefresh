@@ -138,6 +138,12 @@ override func viewDidDisappear(_ animated: Bool) {
 2. Select the scheme `RxPullToRefreshExample` from the drop-down menu in the upper left of the Xcode window
 3. Press ⌘R
 
+## Contributing
+
+Bug reports and pull requests are welcome. See [CONTRIBUTING.md](.github/CONTRIBUTING.md)
+for how to build the project and run the checks, and [SECURITY.md](.github/SECURITY.md)
+for how to report a vulnerability privately.
+
 ## Copyright
 
 RxPullToRefresh is released under MIT license, which means you can modify it, redistribute it or use it however you like.
