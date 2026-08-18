@@ -92,8 +92,10 @@ extension BaseTableViewController {
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.reuseId)
         self.tableView.tableFooterView = UIView()
         self.tableView.sectionHeaderHeight = 0
-//        self.tableView.delegate = nil
-//        self.tableView.dataSource = nil
+        /* UITableViewController wires itself as delegate and data source,
+           which RxCocoa refuses to overwrite silently. */
+        self.tableView.delegate = nil
+        self.tableView.dataSource = nil
         self.tableView.rx.setDelegate(self).disposed(by: disposeBag)
         self.tableView.rx.itemSelected
                 .subscribe(onNext: { [weak self] (indexPath: IndexPath) in
