@@ -8,20 +8,11 @@ disabled_rules:
 
 line_length: 480
 function_body_length: 100
-shorthand_operator: warning
 cyclomatic_complexity:
   warning: 20
   error: 40
 
-identifier_name:
-  excluded:
-    - id
-    - ok
-
 excluded:
-  - .bundle
-  - fastlane
-  - Carthage
   - Tests
   - UITests
   - Example

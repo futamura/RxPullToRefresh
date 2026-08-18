@@ -3,7 +3,7 @@
 //  RxPullToRefresh
 //
 //  Created by kojirof on 2019/01/06.
-//  Copyright © 2019 Gumob. All rights reserved.
+//  Copyright © 2019 Kojiro Futamura. All rights reserved.
 //
 
 import Foundation
@@ -37,8 +37,9 @@ public protocol RxPullToRefreshCompatible {
     var p2r: RxPullToRefreshProxy<CompatibleType> { get set }
 }
 
+// swiftlint:disable unused_setter_value
 extension RxPullToRefreshCompatible {
-    /* RxPullToRefreshProxy extensions.*/
+    /* RxPullToRefreshProxy extensions. */
     public static var p2r: RxPullToRefreshProxy<Self>.Type {
         get { return RxPullToRefreshProxy<Self>.self }
         set { /* this enables using RxPullToRefreshProxy to "mutate" base type */ }
@@ -50,6 +51,7 @@ extension RxPullToRefreshCompatible {
         set { /* this enables using RxPullToRefreshProxy to "mutate" base object */ }
     }
 }
+// swiftlint:enable unused_setter_value
 
 /* Extend NSObject with `p2r` proxy. */
 extension NSObject: RxPullToRefreshCompatible {

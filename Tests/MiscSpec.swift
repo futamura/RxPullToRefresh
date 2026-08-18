@@ -3,7 +3,7 @@
 //  RxPullToRefreshTests
 //
 //  Created by kojirof on 2018/12/26.
-//  Copyright © 2018 Gumob. All rights reserved.
+//  Copyright © 2018 Kojiro Futamura. All rights reserved.
 //
 
 import Foundation

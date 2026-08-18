@@ -3,7 +3,7 @@
 //  RxPullToRefresh
 //
 //  Created by kojirof on 2018/12/18.
-//  Copyright © 2018 Gumob. All rights reserved.
+//  Copyright © 2018 Kojiro Futamura. All rights reserved.
 //
 
 import Foundation
@@ -30,7 +30,7 @@ public extension RxPullToRefresh {
             case .top: return sv.contentOffset.replaced(
                     y: -(scrollViewInitialEffectiveInsets.top)
             )
-            case .bottom:return sv.contentOffset.replaced(
+            case .bottom: return sv.contentOffset.replaced(
                     y: self.scrollViewInitialEffectiveInsets.bottom + sv.p2r.scrollableHeight
             )
             }
@@ -154,7 +154,7 @@ public extension RxPullToRefresh {
             case .top: return sv.contentOffset.replaced(
                     y: -(scrollViewInitialEffectiveInsets.top)
             )
-            case .bottom:return sv.contentOffset.replaced(
+            case .bottom: return sv.contentOffset.replaced(
                     y: self.scrollViewInitialEffectiveInsets.bottom + sv.p2r.scrollableHeight
             )
             }

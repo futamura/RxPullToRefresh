@@ -3,7 +3,7 @@
 //  RxPullToRefresh
 //
 //  Created by kojirof on 2018/12/15.
-//  Copyright © 2018 Gumob. All rights reserved.
+//  Copyright © 2018 Kojiro Futamura. All rights reserved.
 //
 
 import Foundation
@@ -15,8 +15,8 @@ import ObjectiveC
  */
 internal extension UIScrollView {
     fileprivate struct Keys {
-        static var topPullToRefresh: String = "com.gumob.RxPullToRefresh.topPullToRefresh"
-        static var bottomPullToRefresh: String = "com.gumob.RxPullToRefresh.bottomPullToRefreshKey"
+        static var topPullToRefresh: String = "dev.futamura.RxPullToRefresh.topPullToRefresh"
+        static var bottomPullToRefresh: String = "dev.futamura.RxPullToRefresh.bottomPullToRefreshKey"
     }
 
     /**
@@ -36,7 +36,6 @@ internal extension UIScrollView {
     }
 }
 
-//public extension UIScrollView {
 public extension RxPullToRefreshProxy where Base: UIScrollView {
     /**
      A function to add a RxPullToRefresh object to a UIScrollView.
@@ -146,7 +145,6 @@ public extension RxPullToRefreshProxy where Base: UIScrollView {
 
 }
 
-//internal extension UIScrollView {
 internal extension RxPullToRefreshProxy where Base: UIScrollView {
 
     /** A CGFloat indicating a scrollable height. */
