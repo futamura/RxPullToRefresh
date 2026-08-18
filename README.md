@@ -25,6 +25,9 @@ A Swift library allows you to create a flexibly customizable pull-to-refresh vie
 - Swift 5.9 or later
 - RxSwift 6.x
 
+Upgrading from 1.x? See the [migration guide](CHANGELOG.md#migration-guide) — 2.0.0
+drops CocoaPods and Carthage in favour of Swift Package Manager.
+
 ## Installation
 
 ### Swift Package Manager
