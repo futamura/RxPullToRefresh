@@ -90,6 +90,9 @@ private extension RxPullToRefresh {
         }
     }
 
+    /* Splitting the state machine would spread one scroll event across several
+       functions, so the branches stay here deliberately. */
+    // swiftlint:disable cyclomatic_complexity
     /**
      A function called when UIScrollView.contentOffset is changed.
      */
@@ -195,6 +198,7 @@ private extension RxPullToRefresh {
             self.state = tmpState
         }
     }
+    // swiftlint:enable cyclomatic_complexity
 
     /**
      A function that called when UIScrollView.contentSize is changed.
