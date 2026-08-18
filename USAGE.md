@@ -1,6 +1,6 @@
 ## Usage
 
-Read the [API reference](https://futamura.github.io/RxPullToRefresh/Classes/RxPullToRefresh.html) and the [USAGE.md](https://futamura.github.io/RxPullToRefresh/usage.html) for detailed information.
+Read the [API reference](https://futamura.github.io/RxPullToRefresh/documentation/rxpulltorefresh/rxpulltorefresh/) and the [USAGE.md](https://github.com/futamura/RxPullToRefresh/blob/master/USAGE.md) for detailed information.
 
 ### Basic Usage
 
@@ -25,7 +25,7 @@ self.tableView.p2r.addPullToRefresh(self.topPullToRefresh)
 
 #### Observe RxPullToRefreshDelegate
 
-By observing [RxPullToRefreshDelegate](https://futamura.github.io/RxPullToRefresh/Protocols/RxPullToRefreshDelegate.html), you can watch the state of a RxPullToRefresh object. This delegate is get called by the RxPullToRefresh object every time its [state](https://futamura.github.io/RxPullToRefresh/Enums/RxPullToRefreshState.html) or scrolling rate is changed.
+By observing [RxPullToRefreshDelegate](https://futamura.github.io/RxPullToRefresh/documentation/rxpulltorefresh/rxpulltorefreshdelegate/), you can watch the state of a RxPullToRefresh object. This delegate is get called by the RxPullToRefresh object every time its [state](https://futamura.github.io/RxPullToRefresh/documentation/rxpulltorefresh/rxpulltorefreshstate/) or scrolling rate is changed.
 ```swift
 // Observe RxPullToRefreshDelegate
 self.topPullToRefresh.rx.action
@@ -76,7 +76,7 @@ override func viewDidDisappear(_ animated: Bool) {
 
 #### About the example project
 
-`RxPullToRefresh` allows you flexibly customize a refresh view by inheriting [RxPullToRefresh](https://futamura.github.io/RxPullToRefresh/Classes/RxPullToRefresh.html) and [RxPullToRefreshView](https://futamura.github.io/RxPullToRefresh/Classes/RxPullToRefreshView.html) classes. Please check [example sources](https://github.com/futamura/RxPullToRefresh/blob/master/Example/) for advanced usage.
+`RxPullToRefresh` allows you flexibly customize a refresh view by inheriting [RxPullToRefresh](https://futamura.github.io/RxPullToRefresh/documentation/rxpulltorefresh/rxpulltorefresh/) and [RxPullToRefreshView](https://futamura.github.io/RxPullToRefresh/documentation/rxpulltorefresh/rxpulltorefreshview/) classes. Please check [example sources](https://github.com/futamura/RxPullToRefresh/blob/master/Example/) for advanced usage.
 
 - [CustomRefresh](https://github.com/futamura/RxPullToRefresh/blob/master/Example/CustomRefresh.swift): A class inheriting from `RxPullToRefresh`.
 - [CustomRefreshView](https://github.com/futamura/RxPullToRefresh/blob/master/Example/CustomRefresh.swift): A class inheriting from `RxPullToRefreshView`. Animation logics are implemented in this class.
@@ -86,10 +86,6 @@ override func viewDidDisappear(_ animated: Bool) {
 
 #### Build the example app
 
-1. Update Carthage frameworks
-```bash
-$ carthage update --platform iOS
-```
-2. Open `RxPullToRefresh.xcodeproj`
-3. Select the scheme `RxPullToRefreshExample` from the drop-down menu in the upper left of the Xcode window
-4. Press ⌘R
+1. Open `RxPullToRefresh.xcodeproj` (dependencies are resolved automatically by Swift Package Manager)
+2. Select the scheme `RxPullToRefreshExample` from the drop-down menu in the upper left of the Xcode window
+3. Press ⌘R

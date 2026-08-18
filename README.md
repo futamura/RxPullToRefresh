@@ -1,13 +1,11 @@
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg)](https://github.com/futamura/RxPullToRefresh)
-[![Version](http://img.shields.io/cocoapods/v/RxPullToRefresh.svg)](http://cocoadocs.org/docsets/RxPullToRefresh)
-[![Platform](http://img.shields.io/cocoapods/p/RxPullToRefresh.svg)](http://cocoadocs.org/docsets/RxPullToRefresh)
-[![Build Status](https://travis-ci.com/gumob/RxPullToRefresh.svg?branch=master)](https://travis-ci.com/gumob/RxPullToRefresh)
-[![codecov](https://codecov.io/gh/gumob/RxPullToRefresh/branch/master/graph/badge.svg)](https://codecov.io/gh/gumob/RxPullToRefresh)
-[![Reviewed by Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com)
-![Language](https://img.shields.io/badge/Language-Swift%204.2-orange.svg)
-![Packagist](https://img.shields.io/packagist/l/doctrine/orm.svg)
+[![CI](https://github.com/futamura/RxPullToRefresh/actions/workflows/ci.yml/badge.svg)](https://github.com/futamura/RxPullToRefresh/actions/workflows/ci.yml)
+[![Swift Package Manager compatible](https://img.shields.io/badge/SPM-compatible-4BC51D.svg)](https://swift.org/package-manager/)
+![Platform](https://img.shields.io/badge/Platform-iOS%2013%2B-blue.svg)
+![Language](https://img.shields.io/badge/Language-Swift%205.9-orange.svg)
+![License](https://img.shields.io/badge/License-MIT-lightgrey.svg)
 
 # RxPullToRefresh
+
 A Swift library allows you to create a flexibly customizable pull-to-refresh view supporting RxSwift.
 
 <img src="https://raw.githubusercontent.com/futamura/RxPullToRefresh/master/Metadata/screenshot-animation.gif" alt="drawing" width="240px" style="width:240px;"/>
@@ -23,40 +21,31 @@ A Swift library allows you to create a flexibly customizable pull-to-refresh vie
 
 ## Requirements
 
-- iOS 10.0 or later
-- Swift 5.0 or later
+- iOS 13.0 or later
+- Swift 5.9 or later
+- RxSwift 6.x
 
 ## Installation
 
-### Carthage
+### Swift Package Manager
 
-Add the following to your `Cartfile` and follow [these instructions](https://github.com/Carthage/Carthage#adding-frameworks-to-an-application).
+In Xcode, select **File > Add Package Dependencies…** and enter:
 
 ```
-github "futamura/RxPullToRefresh"        # Swift 5.0
-github "futamura/RxPullToRefresh" ~> 1.0 # Swift 5.0
-github "futamura/RxPullToRefresh" ~> 0.1 # Swift 4.2
+https://github.com/futamura/RxPullToRefresh.git
 ```
 
-Do not forget to include RxSwift.framework and RxCocoa.framework. Otherwise it will fail to build the application.<br/>
+Or add the following to your `Package.swift`:
 
-<img src="https://raw.githubusercontent.com/futamura/RxPullToRefresh/master/Metadata/carthage-xcode-config.jpg" alt="drawing" width="480" style="width:100%; max-width: 480px;"/>
-
-### CocoaPods
-
-To integrate RxPullToRefresh into your project, add the following to your `Podfile`.
-
-```ruby
-platform :ios, '10.0'
-use_frameworks!
-
-pod 'RxPullToRefresh', '~> 1.0'   # Swift 5.0
-pod 'RxPullToRefresh', '~> 0.1'   # Swift 4.2
+```swift
+dependencies: [
+    .package(url: "https://github.com/futamura/RxPullToRefresh.git", from: "2.0.0")
+]
 ```
 
 ## Usage
 
-Read the [API reference](https://futamura.github.io/RxPullToRefresh/Classes/RxPullToRefresh.html) and the [USAGE.md](https://futamura.github.io/RxPullToRefresh/usage.html) for detailed information.
+Read the [API reference](https://futamura.github.io/RxPullToRefresh/documentation/rxpulltorefresh/) and the [USAGE.md](https://github.com/futamura/RxPullToRefresh/blob/master/USAGE.md) for detailed information.
 
 ### Basic Usage
 
@@ -81,7 +70,7 @@ self.tableView.p2r.addPullToRefresh(self.topPullToRefresh)
 
 #### Observe RxPullToRefreshDelegate
 
-By observing [RxPullToRefreshDelegate](https://futamura.github.io/RxPullToRefresh/Protocols/RxPullToRefreshDelegate.html), you can watch the state of a RxPullToRefresh object. This delegate is get called by the RxPullToRefresh object every time its [state](https://futamura.github.io/RxPullToRefresh/Enums/RxPullToRefreshState.html) or scrolling rate is changed.
+By observing [RxPullToRefreshDelegate](https://futamura.github.io/RxPullToRefresh/documentation/rxpulltorefresh/rxpulltorefreshdelegate/), you can watch the state of a RxPullToRefresh object. This delegate is get called by the RxPullToRefresh object every time its [state](https://futamura.github.io/RxPullToRefresh/documentation/rxpulltorefresh/rxpulltorefreshstate/) or scrolling rate is changed.
 ```swift
 // Observe RxPullToRefreshDelegate
 self.topPullToRefresh.rx.action
@@ -132,7 +121,7 @@ override func viewDidDisappear(_ animated: Bool) {
 
 #### About the example project
 
-`RxPullToRefresh` allows you flexibly customize a refresh view by inheriting [RxPullToRefresh](https://futamura.github.io/RxPullToRefresh/Classes/RxPullToRefresh.html) and [RxPullToRefreshView](https://futamura.github.io/RxPullToRefresh/Classes/RxPullToRefreshView.html) classes. Please check [example sources](https://github.com/futamura/RxPullToRefresh/blob/master/Example/) for advanced usage.
+`RxPullToRefresh` allows you flexibly customize a refresh view by inheriting [RxPullToRefresh](https://futamura.github.io/RxPullToRefresh/documentation/rxpulltorefresh/rxpulltorefresh/) and [RxPullToRefreshView](https://futamura.github.io/RxPullToRefresh/documentation/rxpulltorefresh/rxpulltorefreshview/) classes. Please check [example sources](https://github.com/futamura/RxPullToRefresh/blob/master/Example/) for advanced usage.
 
 - [CustomRefresh](https://github.com/futamura/RxPullToRefresh/blob/master/Example/CustomRefresh.swift): A class inheriting from `RxPullToRefresh`.
 - [CustomRefreshView](https://github.com/futamura/RxPullToRefresh/blob/master/Example/CustomRefresh.swift): A class inheriting from `RxPullToRefreshView`. Animation logics are implemented in this class.
@@ -142,14 +131,9 @@ override func viewDidDisappear(_ animated: Bool) {
 
 #### Build the example app
 
-1. Update Carthage frameworks
-```bash
-$ carthage update --platform iOS
-```
-2. Open `RxPullToRefresh.xcodeproj`
-3. Select the scheme `RxPullToRefreshExample` from the drop-down menu in the upper left of the Xcode window
-4. Press ⌘R
-
+1. Open `RxPullToRefresh.xcodeproj` (dependencies are resolved automatically by Swift Package Manager)
+2. Select the scheme `RxPullToRefreshExample` from the drop-down menu in the upper left of the Xcode window
+3. Press ⌘R
 
 ## Copyright
 
