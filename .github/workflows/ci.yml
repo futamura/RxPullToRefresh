@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  push:
+    branches: [master, develop]
+    tags: ['v*']
+  pull_request:
+    branches: [master, develop]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Unit tests
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run unit tests
+        run: |
+          set -o pipefail
+          xcodebuild test \
+            -project RxPullToRefresh.xcodeproj \
+            -scheme RxPullToRefresh \
+            -destination 'platform=iOS Simulator,name=iPhone 16' \
+            -only-testing:RxPullToRefreshTests \
+            CODE_SIGNING_ALLOWED=NO | xcbeautify
+
+  build-example:
+    name: Build example app
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build example
+        run: |
+          set -o pipefail
+          xcodebuild build \
+            -project RxPullToRefresh.xcodeproj \
+            -scheme RxPullToRefreshExample \
+            -destination 'generic/platform=iOS Simulator' \
+            CODE_SIGNING_ALLOWED=NO | xcbeautify
+
+  lint:
+    name: SwiftLint
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run SwiftLint
+        run: swiftlint lint --reporter github-actions-logging
