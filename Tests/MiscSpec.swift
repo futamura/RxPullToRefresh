@@ -21,7 +21,10 @@ class MiscSpec: QuickSpec {
         describe("Spec Miscellaneous") {
             describe("Spec Codable") {
                 it("DefaultRefreshView") {
-                    let coder: NSKeyedUnarchiver = NSKeyedUnarchiver(forReadingWith: Data())
+                    let archiver: NSKeyedArchiver = NSKeyedArchiver(requiringSecureCoding: false)
+                    archiver.finishEncoding()
+                    let coder: NSKeyedUnarchiver = try NSKeyedUnarchiver(forReadingFrom: archiver.encodedData)
+                    coder.requiresSecureCoding = false
                     let refreshView: DefaultRefreshView? = DefaultRefreshView(coder: coder)
                     expect(refreshView).notTo(beNil())
                 }

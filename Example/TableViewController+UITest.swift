@@ -15,7 +15,10 @@ import RxPullToRefresh
 extension BaseTableViewController {
 
     func setupUIControl() {
-        guard let superView: UIView = UIApplication.shared.keyWindow,
+        guard let superView: UIView = UIApplication.shared.connectedScenes
+                      .compactMap({ $0 as? UIWindowScene })
+                      .flatMap({ $0.windows })
+                      .first(where: { $0.isKeyWindow }),
               let nc: UINavigationController = self.navigationController else { return }
         /*
          * Navigation Controller
