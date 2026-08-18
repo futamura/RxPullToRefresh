@@ -1,0 +1,60 @@
+name: Docs
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build DocC
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build documentation archive
+        run: |
+          set -o pipefail
+          xcodebuild docbuild \
+            -project RxPullToRefresh.xcodeproj \
+            -scheme RxPullToRefresh \
+            -destination 'generic/platform=iOS Simulator' \
+            -derivedDataPath DerivedData \
+            CODE_SIGNING_ALLOWED=NO | xcbeautify
+      - name: Transform for static hosting
+        run: |
+          "$(xcrun --find docc)" process-archive transform-for-static-hosting \
+            DerivedData/Build/Products/Debug-iphonesimulator/RxPullToRefresh.doccarchive \
+            --output-path site \
+            --hosting-base-path RxPullToRefresh
+      - name: Add root redirect
+        run: |
+          cat > site/index.html <<'HTML'
+          <!DOCTYPE html>
+          <html>
+          <head><meta http-equiv="refresh" content="0; url=documentation/rxpulltorefresh/"></head>
+          <body><a href="documentation/rxpulltorefresh/">Redirecting to documentation…</a></body>
+          </html>
+          HTML
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
