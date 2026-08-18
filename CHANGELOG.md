@@ -26,8 +26,9 @@ dependencies: [
 ]
 ```
 
-Version 1.0.1 remains on the CocoaPods trunk for existing projects, but it will
-not receive updates.
+The CocoaPods trunk only ever carried 0.1.x, which targets Swift 4.2 and no
+longer builds on current toolchains. Those versions stay published but receive
+no updates.
 
 **2. Raise your deployment target to iOS 13.**
 
