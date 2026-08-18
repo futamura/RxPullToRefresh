@@ -48,7 +48,7 @@ dependencies: [
 
 ## Usage
 
-Read the [API reference](https://futamura.github.io/RxPullToRefresh/documentation/rxpulltorefresh/) and the [USAGE.md](https://github.com/futamura/RxPullToRefresh/blob/master/USAGE.md) for detailed information.
+Read the [API reference](https://futamura.github.io/RxPullToRefresh/documentation/rxpulltorefresh/) for detailed information.
 
 ### Basic Usage
 

@@ -26,6 +26,9 @@ let package = Package(
             exclude: [
                 "Info.plist",
                 "RxPullToRefresh.h"
+            ],
+            resources: [
+                .process("RxPullToRefresh.docc")
             ]
         )
     ]

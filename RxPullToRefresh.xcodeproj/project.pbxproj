@@ -14,6 +14,7 @@
 		A705E9FA21D34970009D84C8 /* RxSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A705E9F721D3496A009D84C8 /* RxSpec.swift */; };
 		A705E9FB21D3666D009D84C8 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F0132521D121F20022BF84 /* Debug.swift */; };
 		A70F137A21DC652700668518 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70F137921DC652700668518 /* Animator.swift */; };
+		AD0000000000000000000002 /* RxPullToRefresh.docc in Sources */ = {isa = PBXBuildFile; fileRef = AD0000000000000000000001 /* RxPullToRefresh.docc */; };
 		AC0000000000000000000001 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AB0000000000000000000001 /* RxSwift */; };
 		AC0000000000000000000002 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = AB0000000000000000000002 /* RxCocoa */; };
 		AC0000000000000000000011 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AB0000000000000000000011 /* RxSwift */; };
@@ -129,6 +130,7 @@
 		A71F674521C50EA8007CADA0 /* RxPullToRefresh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxPullToRefresh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A71F674821C50EA8007CADA0 /* RxPullToRefresh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RxPullToRefresh.h; sourceTree = "<group>"; };
 		A71F674921C50EA8007CADA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AD0000000000000000000001 /* RxPullToRefresh.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = RxPullToRefresh.docc; sourceTree = "<group>"; };
 		A71F674E21C50EA8007CADA0 /* RxPullToRefreshTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RxPullToRefreshTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A71F675321C50EA8007CADA0 /* EnumSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumSpec.swift; sourceTree = "<group>"; };
 		A71F675521C50EA8007CADA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				A71F674921C50EA8007CADA0 /* Info.plist */,
+				AD0000000000000000000001 /* RxPullToRefresh.docc */,
 				A71F674821C50EA8007CADA0 /* RxPullToRefresh.h */,
 				A71F678321C52ABF007CADA0 /* RxPullToRefresh.swift */,
 				A743D1D121C8F57400230502 /* RxPullToRefresh+Core.swift */,
@@ -521,6 +524,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD0000000000000000000002 /* RxPullToRefresh.docc in Sources */,
 				A70F137A21DC652700668518 /* Animator.swift in Sources */,
 				A712403421CE3A5000883E13 /* Debug.swift in Sources */,
 				A71F678821C52AC0007CADA0 /* DefaultRefreshView.swift in Sources */,

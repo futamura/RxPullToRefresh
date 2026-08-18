@@ -3,9 +3,9 @@ name: CI
 on:
   push:
     branches: [master, develop]
-    tags: ['v*']
   pull_request:
     branches: [master, develop]
+  workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -39,6 +39,24 @@ jobs:
             -project RxPullToRefresh.xcodeproj \
             -scheme RxPullToRefreshExample \
             -destination 'generic/platform=iOS Simulator' \
+            CODE_SIGNING_ALLOWED=NO | xcbeautify
+
+  ui-test:
+    name: UI tests
+    # Drives the simulator for ~15 minutes, so keep it off pull requests.
+    if: github.ref == 'refs/heads/master' || github.event_name == 'workflow_dispatch'
+    runs-on: macos-15
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v5
+      - name: Run UI tests
+        run: |
+          set -o pipefail
+          xcodebuild test \
+            -project RxPullToRefresh.xcodeproj \
+            -scheme RxPullToRefresh \
+            -destination 'platform=iOS Simulator,name=iPhone 16' \
+            -only-testing:RxPullToRefreshUITests \
             CODE_SIGNING_ALLOWED=NO | xcbeautify
 
   lint:
