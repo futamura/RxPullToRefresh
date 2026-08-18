@@ -8,13 +8,14 @@
 
 import Foundation
 import UIKit
+import XCTest
 import Quick
 import Nimble
 
 @testable import RxPullToRefreshExample
 
 class CustomBaseSpec: QuickSpec {
-    override func spec() {
+    override class func spec() {
         let cases: [SpecCase] = [
             SpecCase.caseDrag0Prepend1Append1Force(type: .custom, orientation: .portrait, shouldFailLoad: true),
             SpecCase.caseDrag0Prepend1Append1Force(type: .custom, orientation: .portrait, shouldFailLoad: false),
@@ -31,7 +32,6 @@ class CustomBaseSpec: QuickSpec {
                 beforeEach {
                     app = XCUIApplication()
                     app.setEnv(specCase.getEnv())
-                    self.continueAfterFailure = false
                     app.launch()
                 }
                 it(specCase.paramDescription) {

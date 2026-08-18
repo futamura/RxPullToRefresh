@@ -18,7 +18,7 @@ import RxBlocking
 
 class RxSpec: QuickSpec {
 
-    override func spec() {
+    override class func spec() {
         var scrollView: UIScrollView!
         var topRefreshView: RxPullToRefreshView!
         var bottomRefreshView: RxPullToRefreshView!

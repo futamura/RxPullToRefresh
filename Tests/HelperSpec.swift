@@ -13,7 +13,7 @@ import Nimble
 
 class HelperSpec: QuickSpec {
 
-    override func spec() {
+    override class func spec() {
         describe("Spec Helpers") {
             describe("Spec clamp") {
                 it("is equal") {

@@ -15,7 +15,7 @@ import Nimble
 
 class AnimatorSpec: QuickSpec {
 
-    override func spec() {
+    override class func spec() {
         describe("Spec Animator") {
             var scrollView: UIScrollView!
             var initialContentOffset: CGPoint!
@@ -53,14 +53,14 @@ class AnimatorSpec: QuickSpec {
                                           expect(scrollView.contentOffset).to(equal(CGPoint(x: 0, y: -200)))
                                       })
                 ]
-                expect(animator.state).toEventually(equal(AnimatorState.ready), timeout: 30)
+                expect(animator.state).toEventually(equal(AnimatorState.ready), timeout: .seconds(30))
                 animator.animate(animations: animations,
                                  completion: { (isFinishedAll: Bool) in
                                      expect(isFinishedAll).to(beTrue())
                                      expect(scrollView.contentOffset).to(equal(CGPoint(x: 0, y: -200)))
                                  })
-                expect(animator.state).toEventually(equal(AnimatorState.running), timeout: 30)
-                expect(animator.state).toEventually(equal(AnimatorState.finished), timeout: 30)
+                expect(animator.state).toEventually(equal(AnimatorState.running), timeout: .seconds(30))
+                expect(animator.state).toEventually(equal(AnimatorState.finished), timeout: .seconds(30))
             }
             it("Abort") {
                 animations = [
@@ -85,16 +85,16 @@ class AnimatorSpec: QuickSpec {
                                           expect(scrollView.contentOffset).notTo(equal(CGPoint(x: 0, y: -200)))
                                       })
                 ]
-                expect(animator.state).toEventually(equal(AnimatorState.ready), timeout: 30)
+                expect(animator.state).toEventually(equal(AnimatorState.ready), timeout: .seconds(30))
                 animator.animate(animations: animations,
                                  completion: { (isFinishedAll: Bool) in
                                      expect(isFinishedAll).to(beFalse())
                                      expect(scrollView.contentOffset).notTo(equal(CGPoint(x: 0, y: -200)))
                                  })
 
-                expect(animator.state).toEventually(equal(AnimatorState.running), timeout: 30)
+                expect(animator.state).toEventually(equal(AnimatorState.running), timeout: .seconds(30))
                 animator.abort()
-                expect(animator.state).toEventually(equal(AnimatorState.aborted), timeout: 30)
+                expect(animator.state).toEventually(equal(AnimatorState.aborted), timeout: .seconds(30))
             }
         }
     }

@@ -17,7 +17,7 @@ import RxBlocking
 
 class MiscSpec: QuickSpec {
 
-    override func spec() {
+    override class func spec() {
         describe("Spec Miscellaneous") {
             describe("Spec Codable") {
                 it("DefaultRefreshView") {

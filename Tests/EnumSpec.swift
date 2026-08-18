@@ -13,7 +13,7 @@ import Nimble
 
 class EnumSpec: QuickSpec {
 
-    override func spec() {
+    override class func spec() {
         describe("Spec RxPullToRefreshPosition") {
             describe("Spec RxPullToRefreshPosition") {
                 it("is equal") {

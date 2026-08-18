@@ -296,7 +296,7 @@ enum SpecCase {
 
         /* Wait until elements is ready */
         let vcButton: XCUIElement = app.buttons.element(matching: .button, identifier: self.data.type.buttonId)
-        expect(vcButton.exists && vcButton.isHittable).toEventually(beTrue(), timeout: 10)
+        expect(vcButton.exists && vcButton.isHittable).toEventually(beTrue(), timeout: .seconds(10))
         printf("vcButton.exists", vcButton.exists && vcButton.isHittable)
         /* Push view controller */
         vcButton.tap()
@@ -307,7 +307,7 @@ enum SpecCase {
 
         /* Wait until table is ready */
         let table: XCUIElementQuery = app.tables
-        expect(table.element.exists).toEventually(beTrue(), timeout: 30)
+        expect(table.element.exists).toEventually(beTrue(), timeout: .seconds(30))
         printf("table.element.exists", table.element.exists)
 
         /* Wait until cells are ready */
@@ -375,42 +375,42 @@ enum SpecCase {
 
             case .forceReload:
                 let button: XCUIElement = app.buttons.element(matching: .button, identifier: "ReloadButtonID")
-                expect(button.exists).toEventually(beTrue(), timeout: 10)
+                expect(button.exists).toEventually(beTrue(), timeout: .seconds(10))
                 printf("button.exists", button.exists)
                 button.tap()
                 sleep(2)
 
             case .forceTopPullToRefresh:
                 let button: XCUIElement = app.buttons.element(matching: .button, identifier: "RefreshTopButtonID")
-                expect(button.exists).toEventually(beTrue(), timeout: 10)
+                expect(button.exists).toEventually(beTrue(), timeout: .seconds(10))
                 printf("button.exists", button.exists)
                 button.tap()
                 sleep(3)
 
             case .forceBottomPullToRefresh:
                 let button: XCUIElement = app.buttons.element(matching: .button, identifier: "RefreshBottomButtonID")
-                expect(button.exists).toEventually(beTrue(), timeout: 10)
+                expect(button.exists).toEventually(beTrue(), timeout: .seconds(10))
                 printf("button.exists", button.exists)
                 button.tap()
                 sleep(3)
 
             case .endAllPullToRefresh:
                 let button: XCUIElement = app.buttons.element(matching: .button, identifier: "EndAllRefreshButtonID")
-                expect(button.exists).toEventually(beTrue(), timeout: 10)
+                expect(button.exists).toEventually(beTrue(), timeout: .seconds(10))
                 printf("button.exists", button.exists)
                 button.tap()
                 sleep(1)
 
             case .toggleNavBar:
                 let button: XCUIElement = app.buttons.element(matching: .button, identifier: "ToggleNavBarButtonID")
-                expect(button.exists).toEventually(beTrue(), timeout: 10)
+                expect(button.exists).toEventually(beTrue(), timeout: .seconds(10))
                 printf("button.exists", button.exists)
                 button.tap()
                 sleep(1)
 
             case .toggleToolBar:
                 let button: XCUIElement = app.buttons.element(matching: .button, identifier: "ToggleToolbarButtonID")
-                expect(button.exists).toEventually(beTrue(), timeout: 10)
+                expect(button.exists).toEventually(beTrue(), timeout: .seconds(10))
                 printf("button.exists", button.exists)
                 button.tap()
                 sleep(1)
@@ -426,7 +426,7 @@ enum SpecCase {
 //        coord1.press(forDuration: 0.02, thenDragTo: coord2)
         /* Back top using debug button*/
         let backButton: XCUIElement = app.buttons.element(matching: .button, identifier: "BackButtonID")
-        expect(backButton.exists).toEventually(beTrue(), timeout: 10)
+        expect(backButton.exists).toEventually(beTrue(), timeout: .seconds(10))
         printf("backButton.exists", backButton.exists)
         backButton.tap()
         sleep(2)
