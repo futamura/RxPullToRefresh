@@ -50,8 +50,12 @@ xcodebuild docbuild -project RxPullToRefresh.xcodeproj -scheme RxPullToRefresh -
 
 - Quick 7 形式: `override class func spec()` (instance spec() は Quick 6+ で廃止)。`self.continueAfterFailure` は class func 内で使用不可
 - Nimble 13: `toEventually(..., timeout: .seconds(N))` — 数値リテラル不可
+- UITests は 1 ケース 40〜60 秒 × 17 = 約 14 分。`-derivedDataPath` を明示しないと外部の Xcode 操作で成果物が消え `Cannot launch simulated executable` になる
+- Example は `UITableViewController` + storyboard outlet で delegate が二重配線される。`rx.setDelegate` の前に `delegate`/`dataSource` を nil にしないと RxCocoa の assert で落ちる (Debug ビルドのみ発火)
 
 ## CI (.github/workflows/)
 
-- `ci.yml`: push/PR (master, develop) で unit tests + Example build + SwiftLint (macos-15)
-- `docs.yml`: master push で DocC → GitHub Pages (Pages source は GitHub Actions 方式)
+- `ci.yml`: push/PR (master, develop) で unit tests + Example build + SwiftLint。UI tests は master push と `workflow_dispatch` のみ (所要 15 分)
+- `docs.yml`: master push で DocC → GitHub Pages (Pages source を「GitHub Actions」に切り替えてある前提)
+- `release.yml`: `2.0.0` 形式のタグ push で CHANGELOG の該当セクションを抽出して GitHub Release を作成
+- SwiftLint は macOS runner に同梱されないため ubuntu + `ghcr.io/realm/swiftlint` コンテナで実行する
