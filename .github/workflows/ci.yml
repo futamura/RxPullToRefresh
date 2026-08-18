@@ -16,7 +16,7 @@ jobs:
     name: Unit tests
     runs-on: macos-15
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Run unit tests
         run: |
           set -o pipefail
@@ -31,7 +31,7 @@ jobs:
     name: Build example app
     runs-on: macos-15
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Build example
         run: |
           set -o pipefail
@@ -43,8 +43,10 @@ jobs:
 
   lint:
     name: SwiftLint
-    runs-on: macos-15
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/realm/swiftlint:latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Run SwiftLint
         run: swiftlint lint --reporter github-actions-logging

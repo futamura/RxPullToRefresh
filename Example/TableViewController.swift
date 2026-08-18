@@ -210,7 +210,7 @@ extension BaseTableViewController {
                       .debug("🔶🔃🔃🔃🔃")
                       .subscribe(onSuccess: { [weak self] in
                           self?.tableView.p2r.endAllRefreshing()
-                      }, onError: { [weak self] (_: Error) in
+                      }, onFailure: { [weak self] (_: Error) in
                           self?.tableView.p2r.endAllRefreshing()
                       })
                       .disposed(by: self.disposeBag)
@@ -222,7 +222,7 @@ extension BaseTableViewController {
                       .debug("🔺➕➕➕➕")
                       .subscribe(onSuccess: { [weak self] in
                           self?.tableView.p2r.endRefreshing(at: .top)
-                      }, onError: { [weak self] (_: Error) in
+                      }, onFailure: { [weak self] (_: Error) in
                           self?.tableView.p2r.failRefreshing(at: .top)
                       })
                       .disposed(by: self.disposeBag)
@@ -234,7 +234,7 @@ extension BaseTableViewController {
                       .debug("🔽➕➕➕➕")
                       .subscribe(onSuccess: { [weak self] in
                           self?.tableView.p2r.endRefreshing(at: .bottom)
-                      }, onError: { [weak self] (_: Error) in
+                      }, onFailure: { [weak self] (_: Error) in
                           self?.tableView.p2r.failRefreshing(at: .bottom)
                       })
                       .disposed(by: self.disposeBag)
