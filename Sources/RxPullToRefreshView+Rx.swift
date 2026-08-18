@@ -18,7 +18,7 @@ extension Reactive where Base: RxPullToRefreshView {
                    .filter { $0 != nil }
                    .map { $0! }
                    .distinctUntilChanged()
-                   .takeUntil(deallocated)
+                   .take(until: deallocated)
                    .asDriver(onErrorDriveWith: Driver.empty())
     }
 }

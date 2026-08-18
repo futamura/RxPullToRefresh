@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 /**
  An Enumerations indicating the position of a RxPullToRefresh object.

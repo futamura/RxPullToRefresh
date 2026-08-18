@@ -21,7 +21,7 @@ extension Reactive where Base: UIScrollView {
             .filter { $0 != nil }
             .map { $0! }
             .distinctUntilChanged()
-            .takeUntil(deallocated)
+            .take(until: deallocated)
         let observer = Binder(self.base) { (scroll: UIScrollView, contentSize: CGSize) in
             scroll.contentSize = contentSize
         }
@@ -36,7 +36,7 @@ extension Reactive where Base: UIScrollView {
             .filter { $0 != nil }
             .map { $0! }
             .distinctUntilChanged()
-            .takeUntil(deallocated)
+            .take(until: deallocated)
         let observer = Binder(self.base) { (scroll: UIScrollView, contentInset: UIEdgeInsets) in
             scroll.contentInset = contentInset
         }

@@ -53,7 +53,7 @@ class TableViewModel {
 
         return Single.create { [weak self] (single) in
             guard let `self`: TableViewModel = self else {
-                single(.error(ViewModelError.objectDisposed))
+                single(.failure(ViewModelError.objectDisposed))
                 return Disposables.create {}
             }
             var sectionModels: [SectionModel] = [SectionModel(title: "Section 1", items: [RowModel]())]
@@ -78,12 +78,12 @@ class TableViewModel {
     func prepend() -> Single<()> {
         return Single.create { [weak self] (single) in
             guard let `self`: TableViewModel = self else {
-                single(.error(ViewModelError.objectDisposed))
+                single(.failure(ViewModelError.objectDisposed))
                 return Disposables.create {}
             }
             if self.shouldFailLoad.value {
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + self.refreshDuration) {
-                    single(.error(ViewModelError.loadFailed))
+                    single(.failure(ViewModelError.loadFailed))
                 }
                 return Disposables.create {}
             }
@@ -107,7 +107,7 @@ class TableViewModel {
                 }
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + self.refreshDuration) { [weak self] in
                     guard let `self`: TableViewModel = self else {
-                        single(.error(ViewModelError.objectDisposed))
+                        single(.failure(ViewModelError.objectDisposed))
                         return
                     }
                     self.sections.accept(sectionModels)
@@ -123,12 +123,12 @@ class TableViewModel {
     func append() -> Single<()> {
         return Single.create { [weak self] (single) in
             guard let `self`: TableViewModel = self else {
-                single(.error(ViewModelError.objectDisposed))
+                single(.failure(ViewModelError.objectDisposed))
                 return Disposables.create {}
             }
             if self.shouldFailLoad.value {
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + self.refreshDuration) {
-                    single(.error(ViewModelError.loadFailed))
+                    single(.failure(ViewModelError.loadFailed))
                 }
                 return Disposables.create {}
             }
@@ -152,7 +152,7 @@ class TableViewModel {
                 }
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + self.refreshDuration) { [weak self] in
                     guard let `self`: TableViewModel = self else {
-                        single(.error(ViewModelError.objectDisposed))
+                        single(.failure(ViewModelError.objectDisposed))
                         return
                     }
                     self.sections.accept(sectionModels)

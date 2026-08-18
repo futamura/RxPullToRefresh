@@ -18,7 +18,7 @@ extension Reactive where Base: RxPullToRefresh {
                                            .filter { $0 != nil }
                                            .map { $0! }
                                            .distinctUntilChanged()
-                                           .takeUntil(deallocated)
+                                           .take(until: deallocated)
         let observer = Binder(self.base) { (refresh: RxPullToRefresh, isEnabled: Bool) in
             refresh.isEnabled = isEnabled
         }
@@ -33,7 +33,7 @@ extension Reactive where Base: RxPullToRefresh {
                                            .filter { $0 != nil }
                                            .map { $0! }
                                            .distinctUntilChanged()
-                                           .takeUntil(deallocated)
+                                           .take(until: deallocated)
         let observer = Binder(self.base) { (refresh: RxPullToRefresh, canLoadMore: Bool) in
             refresh.canLoadMore = canLoadMore
         }
@@ -46,7 +46,7 @@ extension Reactive where Base: RxPullToRefresh {
                    .filter { $0 != nil }
                    .map { $0! > 0 }
                    .distinctUntilChanged()
-                   .takeUntil(deallocated)
+                   .take(until: deallocated)
                    .asDriver(onErrorDriveWith: Driver.empty())
     }
 }

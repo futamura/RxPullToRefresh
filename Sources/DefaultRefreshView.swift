@@ -11,7 +11,7 @@ import UIKit
 internal class DefaultRefreshView: RxPullToRefreshView {
 
     lazy var activityIndicator: UIActivityIndicatorView! = {
-        let activityIndicator = UIActivityIndicatorView(style: .gray)
+        let activityIndicator = UIActivityIndicatorView(style: .medium)
         self.addSubview(activityIndicator)
         return activityIndicator
     }()
