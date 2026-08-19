@@ -15,8 +15,10 @@ import ObjectiveC
  */
 internal extension UIScrollView {
     fileprivate struct Keys {
-        static var topPullToRefresh: String = "dev.futamura.RxPullToRefresh.topPullToRefresh"
-        static var bottomPullToRefresh: String = "dev.futamura.RxPullToRefresh.bottomPullToRefreshKey"
+        /* Only the addresses of these variables are used as association keys;
+           their values are meaningless. */
+        static var topPullToRefresh: UInt8 = 0
+        static var bottomPullToRefresh: UInt8 = 0
     }
 
     /**
