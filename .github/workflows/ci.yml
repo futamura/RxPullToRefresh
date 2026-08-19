@@ -60,16 +60,19 @@ jobs:
     # Drives the simulator for ~15 minutes, so keep it off pull requests.
     if: github.ref == 'refs/heads/master' || github.event_name == 'workflow_dispatch'
     runs-on: macos-15
-    # The suite runs in ~20 minutes, with or without coverage. One run still
-    # hung past the old 45 minute cap without producing any test output, so
-    # the ceiling is generous enough to absorb a slow runner.
+    # The suite runs in ~20 minutes. Two runs have instead wedged until the
+    # job was killed, so the per-test allowance below is the real guard and
+    # this ceiling is only a backstop.
     timeout-minutes: 90
     steps:
       - uses: actions/checkout@v5
       - name: Run UI tests
         run: |
           set -o pipefail
-          xcodebuild test \
+          # NSUnbufferedIO makes xcodebuild write through the pipe as it goes.
+          # Without it the run reports nothing for twenty minutes, which looks
+          # exactly like a hang and hides where a real one happened.
+          NSUnbufferedIO=YES xcodebuild test \
             -project RxPullToRefresh.xcodeproj \
             -scheme RxPullToRefresh \
             -destination 'platform=iOS Simulator,name=iPhone 16' \
@@ -77,6 +80,9 @@ jobs:
             -enableCodeCoverage YES \
             -retry-tests-on-failure \
             -test-iterations 2 \
+            -test-timeouts-enabled YES \
+            -default-test-execution-time-allowance 180 \
+            -maximum-test-execution-time-allowance 300 \
             CODE_SIGNING_ALLOWED=NO | xcbeautify
       # Same as the unit test job: no -derivedDataPath, or the uploader finds
       # no profdata and silently reports zero coverage. Runs even when a case
