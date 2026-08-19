@@ -60,9 +60,9 @@ jobs:
     # Drives the simulator for ~15 minutes, so keep it off pull requests.
     if: github.ref == 'refs/heads/master' || github.event_name == 'workflow_dispatch'
     runs-on: macos-15
-    # Without coverage the suite takes ~22 minutes here. Enabling it pushed the
-    # job past the old 45 minute cap, so this is deliberately generous until
-    # the real cost is known.
+    # The suite runs in ~20 minutes, with or without coverage. One run still
+    # hung past the old 45 minute cap without producing any test output, so
+    # the ceiling is generous enough to absorb a slow runner.
     timeout-minutes: 90
     steps:
       - uses: actions/checkout@v5
