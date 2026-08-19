@@ -71,7 +71,17 @@ jobs:
             -scheme RxPullToRefresh \
             -destination 'platform=iOS Simulator,name=iPhone 16' \
             -only-testing:RxPullToRefreshUITests \
+            -enableCodeCoverage YES \
             CODE_SIGNING_ALLOWED=NO | xcbeautify
+      # Same as the unit test job: no -derivedDataPath, or the uploader finds
+      # no profdata and silently reports zero coverage.
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v7
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          swift_project: RxPullToRefresh
+          flags: uitests
+          fail_ci_if_error: false
 
   lint:
     name: SwiftLint

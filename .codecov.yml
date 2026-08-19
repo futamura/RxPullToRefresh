@@ -1,6 +1,12 @@
-# Coverage is uploaded from the unit test job in .github/workflows/ci.yml.
+# Coverage is uploaded from both test jobs in .github/workflows/ci.yml.
 # The codecov CLI's xcode plugin turns the profdata that xcodebuild leaves in
 # DerivedData into llvm-cov reports, so no Ruby tooling is involved.
+#
+# The two suites are complementary rather than redundant: the unit tests cover
+# the value helpers and the animator, while the UI tests drive a real
+# UIScrollView and are the only thing that reaches the KVO state machine in
+# RxPullToRefresh+Core.swift and the proxy in UIScrollView+P2R.swift. Measured
+# separately they sit at 46% and 81%; merged they reach 94%.
 
 coverage:
   status:
@@ -14,6 +20,21 @@ coverage:
       default:
         target: 80%
         threshold: 5%
+
+flags:
+  unittests:
+    paths:
+      - Sources/
+    carryforward: false
+  uitests:
+    paths:
+      - Sources/
+    # The UI test job only runs on master pushes, so pull requests carry the
+    # last upload forward instead of reporting 0%. That carried report comes
+    # from an earlier commit and therefore says nothing about lines the pull
+    # request adds, so the patch status is effectively unit-tests-only until
+    # the branch lands on master.
+    carryforward: true
 
 ignore:
   - "Sources/Debug.swift"   # logging helpers, compiled out of release builds
