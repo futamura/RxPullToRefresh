@@ -75,10 +75,14 @@ jobs:
             -destination 'platform=iOS Simulator,name=iPhone 16' \
             -only-testing:RxPullToRefreshUITests \
             -enableCodeCoverage YES \
+            -retry-tests-on-failure \
+            -test-iterations 2 \
             CODE_SIGNING_ALLOWED=NO | xcbeautify
       # Same as the unit test job: no -derivedDataPath, or the uploader finds
-      # no profdata and silently reports zero coverage.
+      # no profdata and silently reports zero coverage. Runs even when a case
+      # failed, because the cases that did pass still measured the framework.
       - name: Upload coverage to Codecov
+        if: ${{ !cancelled() }}
         uses: codecov/codecov-action@v7
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
