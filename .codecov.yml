@@ -1,0 +1,26 @@
+# Coverage is uploaded from the unit test job in .github/workflows/ci.yml.
+# The codecov CLI's xcode plugin turns the profdata that xcodebuild leaves in
+# DerivedData into llvm-cov reports, so no Ruby tooling is involved.
+
+coverage:
+  status:
+    project:
+      default:
+        # A refresh view is mostly UIKit glue, so hold the line rather than
+        # chase a number.
+        target: auto
+        threshold: 2%
+    patch:
+      default:
+        target: 80%
+        threshold: 5%
+
+ignore:
+  - "Sources/Debug.swift"   # logging helpers, compiled out of release builds
+  - "Tests"
+  - "UITests"
+  - "Example"
+
+comment:
+  layout: "condensed_header, diff, flags, files"
+  require_changes: true

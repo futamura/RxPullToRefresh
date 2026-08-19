@@ -1,4 +1,5 @@
 [![CI](https://github.com/futamura/RxPullToRefresh/actions/workflows/ci.yml/badge.svg)](https://github.com/futamura/RxPullToRefresh/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/futamura/RxPullToRefresh/branch/master/graph/badge.svg)](https://codecov.io/gh/futamura/RxPullToRefresh)
 [![Swift Package Manager compatible](https://img.shields.io/badge/SPM-compatible-4BC51D.svg)](https://swift.org/package-manager/)
 ![Platform](https://img.shields.io/badge/Platform-iOS%2013%2B-blue.svg)
 ![Language](https://img.shields.io/badge/Language-Swift%205.9-orange.svg)
