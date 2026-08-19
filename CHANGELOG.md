@@ -78,6 +78,8 @@ used to strip the assertion.
 - Missing `UIKit` imports in `Debug.swift` and `Enums.swift`, which only surfaced
   when building through Swift Package Manager.
 - Deprecated `UIActivityIndicatorView.Style.gray` replaced with `.medium`.
+- Associated object keys no longer take pointers to `String` variables, which
+  exposed the string's internal representation and drew compiler warnings.
 
 ## [1.0.1]
 
