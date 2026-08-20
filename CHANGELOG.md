@@ -5,7 +5,7 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.0.0] - 2026-08-19
+## [2.0.0] - 2026-08-20
 
 A maintenance release that brings the library up to the current iOS toolchain.
 The public API is unchanged — every breaking item below is about how the library
