@@ -88,6 +88,22 @@ self.topPullToRefresh.rx.action
         .disposed(by: self.disposeBag)
 ```
 
+You can also conform to the delegate directly and assign it to `delegate`. The
+protocol refines `NSObjectProtocol`, so the conforming type has to inherit from
+`NSObject` — a plain Swift class does not compile.
+```swift
+final class ViewController: UIViewController, RxPullToRefreshDelegate {
+    func action(state: RxPullToRefreshState, progress: CGFloat, scroll: CGFloat) {
+        switch state {
+        case .loading: self.prepend()
+        default:       break
+        }
+    }
+}
+
+self.topPullToRefresh.delegate = self
+```
+
 #### Load and append contents
 
 ```swift

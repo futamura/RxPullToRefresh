@@ -8,7 +8,21 @@
 
 import Foundation
 
-/** The interface for handling actions in a RxPullToRefresh object. */
+/**
+ The interface for handling actions in a RxPullToRefresh object.
+
+ The protocol refines `NSObjectProtocol`, so a conforming type has to inherit
+ from `NSObject`; declaring conformance on a plain Swift class does not compile.
+ Subscribing to `rx.action` delivers the same values and carries no such
+ requirement.
+
+ ```swift
+ final class Controller: NSObject, RxPullToRefreshDelegate {
+     func action(state: RxPullToRefreshState, progress: CGFloat, scroll: CGFloat) {
+     }
+ }
+ ```
+ */
 @objc public protocol RxPullToRefreshDelegate: NSObjectProtocol {
     /**
      A delegate method that called each time a user performs an action.
