@@ -19,7 +19,7 @@ jobs:
     name: Unit tests
     runs-on: macos-15
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
       - name: Run unit tests
         run: |
           set -o pipefail
@@ -45,7 +45,7 @@ jobs:
     name: Build example app
     runs-on: macos-15
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
       - name: Build example
         run: |
           set -o pipefail
@@ -67,7 +67,7 @@ jobs:
     # a wedge should trip it, a cold runner should not.
     timeout-minutes: 90
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
       - name: Run UI tests
         run: |
           # No xcbeautify here, unlike the unit test job: it block-buffers its
@@ -105,6 +105,6 @@ jobs:
     container:
       image: ghcr.io/realm/swiftlint:latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
       - name: Run SwiftLint
         run: swiftlint lint --reporter github-actions-logging
