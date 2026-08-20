@@ -1,0 +1,42 @@
+name: Select a simulator
+description: >
+  Resolves an available iPhone simulator and returns its UDID, waiting for
+  CoreSimulator if the runner has not brought it up yet.
+
+outputs:
+  udid:
+    description: UDID to hand to xcodebuild as -destination "platform=iOS Simulator,id=<udid>".
+    value: ${{ steps.pick.outputs.udid }}
+
+runs:
+  using: composite
+  steps:
+    - id: pick
+      shell: bash
+      run: |
+        # Three runs have failed with "Unable to find a device matching the
+        # provided destination specifier" while xcodebuild listed no iOS
+        # destinations at all, and a plain rerun then passed. Asking simctl
+        # first gives CoreSimulator a chance to come up, and resolving the
+        # device here rather than naming a model in the workflow means a
+        # runner image that drops iPhone 16 does not break the build.
+        uuid='[0-9A-F]{8}(-[0-9A-F]{4}){3}-[0-9A-F]{12}'
+        for attempt in 1 2 3; do
+          devices=$(xcrun simctl list devices available)
+          # Prefer the model the workflows used to name, fall back to any iPhone.
+          line=$(echo "$devices" | grep -E '^ +iPhone 16 \(' | head -1)
+          if [ -z "$line" ]; then
+            line=$(echo "$devices" | grep -E '^ +iPhone' | head -1)
+          fi
+          udid=$(echo "$line" | grep -oE "$uuid" | head -1)
+          if [ -n "$udid" ]; then
+            echo "Selected:$line"
+            echo "udid=$udid" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "No iPhone simulator yet (attempt $attempt of 3); waiting."
+          sleep 15
+        done
+        echo "No iPhone simulator is available on this runner." >&2
+        echo "$devices" >&2
+        exit 1

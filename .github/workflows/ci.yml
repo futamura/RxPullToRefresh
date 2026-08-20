@@ -20,13 +20,15 @@ jobs:
     runs-on: macos-15
     steps:
       - uses: actions/checkout@v7
+      - id: sim
+        uses: ./.github/actions/select-simulator
       - name: Run unit tests
         run: |
           set -o pipefail
           xcodebuild test \
             -project RxPullToRefresh.xcodeproj \
             -scheme RxPullToRefresh \
-            -destination 'platform=iOS Simulator,name=iPhone 16' \
+            -destination "platform=iOS Simulator,id=${{ steps.sim.outputs.udid }}" \
             -only-testing:RxPullToRefreshTests \
             -enableCodeCoverage YES \
             CODE_SIGNING_ALLOWED=NO | xcbeautify
@@ -68,6 +70,8 @@ jobs:
     timeout-minutes: 90
     steps:
       - uses: actions/checkout@v7
+      - id: sim
+        uses: ./.github/actions/select-simulator
       - name: Run UI tests
         run: |
           # No xcbeautify here, unlike the unit test job: it block-buffers its
@@ -78,7 +82,7 @@ jobs:
           NSUnbufferedIO=YES xcodebuild test \
             -project RxPullToRefresh.xcodeproj \
             -scheme RxPullToRefresh \
-            -destination 'platform=iOS Simulator,name=iPhone 16' \
+            -destination "platform=iOS Simulator,id=${{ steps.sim.outputs.udid }}" \
             -only-testing:RxPullToRefreshUITests \
             -enableCodeCoverage YES \
             -retry-tests-on-failure \
