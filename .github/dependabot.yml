@@ -1,11 +1,11 @@
+# There is deliberately no swift entry. Dependabot resolves on Linux, where
+# RxSwift's own manifest leaves RxCocoa out, so parsing Package.swift fails
+# with "product 'RxCocoa' ... not found in package 'RxSwift'" and the job errors
+# every month without ever opening a pull request. Swift dependencies are
+# bumped by hand; the versions CI uses are pinned in the xcodeproj's
+# Package.resolved.
 version: 2
 updates:
-  - package-ecosystem: swift
-    directory: /
-    schedule:
-      interval: monthly
-    open-pull-requests-limit: 5
-
   - package-ecosystem: github-actions
     directory: /
     schedule:
