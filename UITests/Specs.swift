@@ -311,9 +311,13 @@ enum SpecCase {
         printf("table.element.exists", table.element.exists)
 
         /* Wait until cells are ready */
-        while true {
-            if table.element.cells.count > 0 { break }
-        }
+        expect(table.element.cells.count).toEventually(beGreaterThan(0), timeout: .seconds(30))
+
+        /* Bounds the swipe loops below. Each attempt costs a swipe and a second,
+           so exhausting this still lands well inside the per-test allowance CI
+           gives us, and the assertion after each loop reports what went wrong.
+           An unbounded loop here used to spin until the whole job timed out. */
+        let scrollAttemptLimit: Int = 30
 
         /* Commence command */
         for command: SpecCommand in self.data.commands {
@@ -328,7 +332,7 @@ enum SpecCase {
             case .topPullToRefresh:
                 /* Find cell at top */
                 var topCell: XCUIElement!
-                while true {
+                for _ in 0..<scrollAttemptLimit {
                     topCell = table.element.cells.element(matching: .cell, identifier: "Cell-0")
                     if topCell.exists && topCell.isEnabled && topCell.isHittable { break }
                     table.element.swipeDown()
@@ -352,7 +356,7 @@ enum SpecCase {
             case .bottomPullToRefresh:
                 /* Find cell at bottom */
                 var bottomCell: XCUIElement!
-                while true {
+                for _ in 0..<scrollAttemptLimit {
                     bottomCell = table.element.cells.element(matching: .cell, identifier: "Cell-\(table.element.cells.count - 1)")
                     if bottomCell.exists && bottomCell.isEnabled && bottomCell.isHittable { break }
                     table.element.swipeUp()
