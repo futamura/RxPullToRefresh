@@ -62,7 +62,9 @@ jobs:
     runs-on: macos-15
     # The suite runs in ~20 minutes. Two runs have instead wedged until the
     # job was killed, so the per-test allowance below is the real guard and
-    # this ceiling is only a backstop.
+    # this ceiling is only a backstop. The slowest case measures 130 seconds
+    # because it pays for the simulator coming up, hence the roomy allowance:
+    # a wedge should trip it, a cold runner should not.
     timeout-minutes: 90
     steps:
       - uses: actions/checkout@v5
@@ -82,7 +84,7 @@ jobs:
             -retry-tests-on-failure \
             -test-iterations 2 \
             -test-timeouts-enabled YES \
-            -default-test-execution-time-allowance 180 \
+            -default-test-execution-time-allowance 300 \
             -maximum-test-execution-time-allowance 300 \
             CODE_SIGNING_ALLOWED=NO
       # Same as the unit test job: no -derivedDataPath, or the uploader finds
