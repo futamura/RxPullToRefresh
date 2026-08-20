@@ -14,6 +14,12 @@ playground.xcworkspace
 # Swift Package Manager
 .build/
 .swiftpm/
+# Only the root Package.resolved is ignored. It pins what the library resolves
+# for itself, which consumers discard and no CI job reads, since every job
+# builds the xcodeproj. The copy under the xcodeproj is committed instead:
+# that is the one CI resolves, and pinning it keeps a dependency release from
+# changing a build nobody touched.
+/Package.resolved
 
 # Claude Code
 .claude/
